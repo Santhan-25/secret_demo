@@ -4,12 +4,10 @@ on: [push]
 
 jobs:
   default-env-variables:
-    env:
-      DEVOPS: DEVOPS is Culture
-      runs-on: ubuntu-latest
-      steps:
-        - name: Run Secret variable
-          run: |
-            echo "$DEVOPS"
-          env:
-            DEVOPS: ${{ secrets.DEVOPS_SAN }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Secret variable
+        run: |
+          echo "$DEVOPS"
+        env:
+          DEVOPS: ${{ secrets.DEVOPS_SAN }}
