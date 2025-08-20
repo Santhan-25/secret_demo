@@ -9,7 +9,7 @@ jobs:
       - name: Run Secret variable
         run: |
           echo "$DEVOPS"
-          if [${{ secrets.DEVOPS_SAN }} == "Tavant_India"]
+          if [${{ secrets.DEVOPS_SAN }} === "Tavant_India"]
           then 
             echo "Got out Secret"
           fi
