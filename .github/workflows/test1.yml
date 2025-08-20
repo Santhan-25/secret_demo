@@ -1,6 +1,6 @@
 name: Secret and environment variables
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   default-env-variables:
@@ -9,7 +9,10 @@ jobs:
       - name: Run Secret variable
         run: |
           echo "$DEVOPS"
-          if [${{ secrets.DEVOPS_SAN }} === "Tavant_India"]
+          if [${{ secrets.DEVOPS_SAN }} === "Woww Secret"}]; 
+          then 
+            echo "Got out Secret"
+          fi
           then 
             echo "Got out Secret"
           fi
