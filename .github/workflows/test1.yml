@@ -13,8 +13,5 @@ jobs:
           then 
             echo "Got out Secret"
           fi
-          then 
-            echo "Got out Secret"
-          fi
         env:
           DEVOPS: ${{ secrets.DEVOPS_SAN }}
