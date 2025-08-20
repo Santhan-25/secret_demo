@@ -1,13 +1,30 @@
 name: Secret and environment variables
 
-on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "Log Level"
+        required: true
+        default: "info"
+        type: choice
+        options:
+          - debug
+          - info
+          - warn
+          - error
+      environment:
+        description: "Environment to deploy"
+        required: true
+        default: "dev"
+        type: string
 
 jobs:
-  default-env-variables:
+  manual-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Secret variable
+      - name: Get Inputs
         run: |
-          echo "$DEVOPS"
-        env:
-          DEVOPS: ${{ secrets.DEVOPS_SAN }}
+          echo "manual trigger runs successfully"
+          echo "Log Level: $ {{ github.event.inputs.logLevel }} " 
+          echo "Environment: $ {{ github.event.inputs.environment }}"
